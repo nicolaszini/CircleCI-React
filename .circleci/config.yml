@@ -13,14 +13,13 @@ jobs:
   build:
     executor: node
     steps:
-      - slack/notify:
-          channel: tp-ing-sw
-          color: '#42e2f4'
-          message: building...
-          webhook: webhook
       - checkout
       - run: npm install
       - run: npm run build
+      - slack/notify:
+          channel: C015LT4SQ2D
+          color: '#42e2f4'
+          message: BUILD Finalizada
   test:
     executor: node
     steps:
