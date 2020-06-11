@@ -18,7 +18,7 @@ jobs:
       - run: npm run build
       - slack/notify:
           channel: C015LT4SQ2D
-          color: '#42e2f4'
+          color: '#42f44e'
           message: BUILD Finalizada
   test:
     executor: node
@@ -26,5 +26,7 @@ jobs:
       - checkout
       - run: npm install
       - run: npm run test
+      - slack/status:
+          mentions: 'U0151GNJQ22,U0156TZ3JGM'
 orbs:
   slack: circleci/slack@3.4.2
