@@ -9,24 +9,51 @@ workflows:
     jobs:
       - build
       - test
+      - hold:
+          requires:
+            - build
+            - test
+      - deploy:
+          requires:
+            - hold
 jobs:
   build:
     executor: node
     steps:
       - checkout
-      - run: npm install
-      - run: npm run build
-      - slack/notify:
-          channel: C015LT4SQ2D
-          color: '#42f44e'
-          message: BUILD Finalizada
+      - run:
+          name: Install Dependencies
+          command: npm install
+      - run: 
+          name: React Build
+          command: npm run build
+      - slack/status:
+          mentions: 'U0151GNJQ22,U0156TZ3JGM'
   test:
     executor: node
     steps:
       - checkout
-      - run: npm install
-      - run: npm run test
+      - run:
+          name: Install Dependencies
+          command: npm install
+      - run: 
+          name: React Test
+          command: npm run test
       - slack/status:
           mentions: 'U0151GNJQ22,U0156TZ3JGM'
+  deploy:
+    executor: node
+    steps:
+      - run:
+          name: Deploy to Firebase
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
+      - slack/status:
+          mentions: 'U0151GNJQ22,U0156TZ3JGM'     
+  hold:
+    executor: node
+    steps:
+      - slack/approval:
+          channel: C015LT4SQ2D
+          color: '#ff8b33'
 orbs:
   slack: circleci/slack@3.4.2
