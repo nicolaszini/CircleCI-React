@@ -52,7 +52,7 @@ jobs:
     steps:
       - run:
           name: Deploy to Firebase
-          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
+          command: ../node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
       - slack/status:
           mentions: 'U0151GNJQ22,U0156TZ3JGM'     
 orbs:
