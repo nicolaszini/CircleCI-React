@@ -29,6 +29,10 @@ jobs:
           command: npm run build
       - slack/status:
           mentions: 'U0151GNJQ22,U0156TZ3JGM'
+      - persist_to_workspace:
+          root: .
+          paths:
+              - .
   test:
     executor: node
     steps:
@@ -50,6 +54,8 @@ jobs:
   deploy:
     executor: node
     steps:
+      - attach_workspace:
+          at: .
       - run:
           name: Deploy to Firebase
           command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
