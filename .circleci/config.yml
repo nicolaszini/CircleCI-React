@@ -16,6 +16,9 @@ workflows:
       - deploy:
           requires:
             - on_hold
+          filters:
+            branches:
+              only: master
 jobs:
   build:
     executor: node
