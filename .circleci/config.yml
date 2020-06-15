@@ -9,13 +9,13 @@ workflows:
     jobs:
       - build
       - test
-      - hold:
+      - on_hold:
           requires:
             - build
             - test
       - deploy:
           requires:
-            - hold
+            - on_hold
 jobs:
   build:
     executor: node
@@ -41,6 +41,12 @@ jobs:
           command: npm run test
       - slack/status:
           mentions: 'U0151GNJQ22,U0156TZ3JGM'
+  on_hold:
+    executor: node
+    steps:
+      - slack/approval:
+          channel: C015LT4SQ2D
+          color: '#ff8b33'
   deploy:
     executor: node
     steps:
@@ -49,11 +55,5 @@ jobs:
           command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
       - slack/status:
           mentions: 'U0151GNJQ22,U0156TZ3JGM'     
-  hold:
-    executor: node
-    steps:
-      - slack/approval:
-          channel: C015LT4SQ2D
-          color: '#ff8b33'
 orbs:
   slack: circleci/slack@3.4.2
