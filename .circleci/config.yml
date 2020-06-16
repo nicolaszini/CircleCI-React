@@ -10,11 +10,11 @@ workflows:
       - build
       - test
       - hold:
-          type: approval
           requires:
             - build
             - test
       - deploy:
+          type: approval
           requires:
             - hold
           filters:
