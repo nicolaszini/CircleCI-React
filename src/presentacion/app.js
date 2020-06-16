@@ -8,11 +8,30 @@ firebase.initializeApp({
 var db = firebase.firestore();
 
 
+
+
 //agrgar un usuario a la base de datos
 function guardar(){
     var nombre = document.getElementById('nombre').value;
     var apellido = document.getElementById('apellido').value;
     var fecha = document.getElementById('fecha').value;
+    var error = document.getElementById('error');
+    error.style.color = 'red';
+    
+    var mensajeError = [];
+
+    if (nombre.value === null || nombre.value===''){
+        mensajeError.push('Ingresa algun nombre valido');
+    }
+    if (apellido.value === null || apellido.value===''){
+        mensajeError.push('Ingresa algun apellido valido');
+    }
+    if (fecha.value === null || fecha.value===''){
+        mensajeError.push('Ingresa algun año valido');
+    }
+
+    error.innerHTML = mensajeError.join(',');
+
     db.collection("users").add({
         nombre: nombre,
         apellido: apellido,
