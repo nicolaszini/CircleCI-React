@@ -16,7 +16,7 @@ workflows:
             - test
       - deploy:
           requires:
-            - on_hold
+            - hold
           filters:
             branches:
               only: master
