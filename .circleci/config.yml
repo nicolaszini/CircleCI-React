@@ -10,6 +10,7 @@ workflows:
       - build
       - test
       - hold:
+          type: approval
           requires:
             - build
             - test
@@ -58,7 +59,6 @@ jobs:
           mentions: 'U0151GNJQ22,U0156TZ3JGM'
   hold:
     executor: node
-    type: approval
     steps:
       - slack/approval:
           channel: C015LT4SQ2D
