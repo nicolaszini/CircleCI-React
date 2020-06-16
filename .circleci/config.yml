@@ -9,7 +9,7 @@ workflows:
     jobs:
       - build
       - test
-      - on_hold:
+      - hold:
           requires:
             - build
             - test
@@ -56,8 +56,9 @@ jobs:
           command: npm run test
       - slack/status:
           mentions: 'U0151GNJQ22,U0156TZ3JGM'
-  on_hold:
+  hold:
     executor: node
+    type: approval
     steps:
       - slack/approval:
           channel: C015LT4SQ2D
