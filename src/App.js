@@ -1,15 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from './starw.png';
 import './css/App.css';
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>HOLAAAAAAA src/App.js</code> and save to reload.
-        </p>
+        <img src={logo} className="App-logo" alt="logo" />      
+      
+        <h1>Bienvenido a la version 2.1!</h1>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -19,6 +19,7 @@ function App() {
           Learn React
         </a>
       </header>
+      
     </div>
   );
 }
