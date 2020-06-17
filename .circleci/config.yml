@@ -13,8 +13,11 @@ workflows:
           requires:
             - build
             - test
-          type: approval
+          filters:
+            branches:
+              only: master
       - deploy:
+          type: approval
           requires:
             - hold
           filters:
