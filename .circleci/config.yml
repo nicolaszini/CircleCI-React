@@ -9,15 +9,21 @@ workflows:
     jobs:
       - build
       - test
-      - hold:
+      - notify:
           requires:
             - build
             - test
           filters:
             branches:
               only: master
-      - deploy:
+      - hold:
           type: approval
+          requires:
+            - notify
+          filters:
+            branches:
+              only: master
+      - deploy:
           requires:
             - hold
           filters:
@@ -60,7 +66,7 @@ jobs:
           command: npm run test
       - slack/status:
           mentions: 'U0151GNJQ22,U0156TZ3JGM'
-  hold:
+  notify:
     executor: node
     steps:
       - slack/approval:
