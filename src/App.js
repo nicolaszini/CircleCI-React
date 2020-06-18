@@ -10,7 +10,14 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />      
       
         <h1>Bienvenido a la version 2.1!</h1>
-        
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
       </header>
       
     </div>
