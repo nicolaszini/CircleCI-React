@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './img/starw.png';
+import logo from './img/yoda.png';
 import './css/App.css';
 
 
