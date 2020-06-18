@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './starw.png';
+import logo from './img/starw.png';
 import './css/App.css';
 
 
@@ -9,7 +9,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />      
       
-        <h1>Bienvenido a la version 2.1!</h1>
+        <h1>Bienvenido a la version 1.0!</h1>
         <a
           className="App-link"
           href="https://reactjs.org"
