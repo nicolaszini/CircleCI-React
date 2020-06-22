@@ -10,14 +10,8 @@ function App() {
         <p>
           Edit <code>HOLAAAAAAA src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
+        
          
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
